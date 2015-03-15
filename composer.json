@@ -11,5 +11,10 @@
             "email": "kuba.markiewicz@gmail.com"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "MuscaKit\\": "src"
+        }
+    }
 }
