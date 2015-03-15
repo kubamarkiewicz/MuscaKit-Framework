@@ -274,7 +274,7 @@ class DB
 			$msg.="<br>\n$query";
 			$msg.="<br>\n".$this->link->info;
 		}
-		throw new Exception($msg);
+		throw new \Exception($msg);
 		// if ($this->die_on_errors) die($msg); 
 		// else trigger_error($msg);
 	}
