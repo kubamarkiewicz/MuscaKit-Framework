@@ -1,0 +1,15 @@
+{
+    "name": "kubamarkiewicz/musca-kit-framework",
+    "description": "The MuscaKit Framework.",
+    "require": {
+        "smarty/smarty": "~3.1@dev"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kuba Markiewicz",
+            "email": "kuba.markiewicz@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
