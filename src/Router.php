@@ -138,9 +138,9 @@ class Router
 		$class = new \ReflectionClass($controller);
 		$dispatcher = $class->newInstanceArgs($this->arguments);
 
-		// include module template path
+		// include module view path
 		if ($module) {
-			$dispatcher->template->addTemplateDir($this->modulesPath . $module . TEMPLATES_DIR . DS);
+			$dispatcher->view->addTemplateDir($this->modulesPath . $module . TEMPLATES_DIR . DS);
 		}
 
 		// cargar el metodo
@@ -149,7 +149,7 @@ class Router
 		{
 			if (method_exists($controller, $this->uri[$i].$this->actionSuffix)) $action = array_shift($this->uri);
 			
-			// if controler does not exist but exists template then display template
+			// if controler does not exist but exists view then display view
 			// elseif (($controller == 'index') && file_exists(MUSCA_PATH . APP_DIR . TEMPLATES_DIR . DS . $this->uri[$i].'.tpl'))
 			// {
 			// 	$action = 'output';

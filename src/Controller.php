@@ -6,31 +6,25 @@ class Controller
 
 	public $db;
 	public $i18n;
-	public $template;
+	public $view;
 	public $config;
 
-
-	function __construct($db=null, $i18n=null, $template, $config=null)
+	function __construct($db=null, $i18n=null, $view, $config=null)
 	{
     	$this->db = $db;
 		$this->i18n = $i18n;
-    	$this->template = $template;
+    	$this->view = $view;
 		$this->config = $config;
 
 		// Set default section = controller name
-		$this->template->assign('section', strtolower(get_class($this)));
+		$this->view->assign('section', strtolower(get_class($this)));
 	}
-	
-
-	
 
 	protected function redirect($location='/')
 	{
 		header('location: '.MUSCA_URL.$location);
 		die();
 	}
-
-
 
 	/* 
 	 * Send HTTP error header & display error page & die 
@@ -45,10 +39,10 @@ class Controller
 		if (!file_exists(MUSCA_PATH.APP_DIR.TEMPLATES_DIR.'/error.tpl')) die("<pre>$title\n$message");
 
 		// display error page
-		$this->template->assign('message', $message);
-		$this->template->assign('title', $title);
-		$this->template->assign('section', 'error');
-		$this->template->display('error.tpl');
+		$this->view->assign('message', $message);
+		$this->view->assign('title', $title);
+		$this->view->assign('section', 'error');
+		$this->view->display('error.tpl');
 		die();
 	}
 
