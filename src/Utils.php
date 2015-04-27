@@ -2,7 +2,7 @@
 namespace MuscaKit;
 
 	
-class Musca_Utils
+class Utils
 {
 
 

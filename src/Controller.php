@@ -30,13 +30,13 @@ class Controller
 	 * Send HTTP error header & display error page & die 
 	 * Find more errors codes here: http://krisjordan.com/php-class-for-http-response-status-codes
 	 */ 
-	protected function error($message='Page not found.', $title='404', $code='404 Not Found')
+	public function error($message='Page not found', $title='Error 404', $code='404 Not Found')
 	{
 		// send HTTP error header
 		if ($code) header('HTTP/1.1 '.$code);
 
 		if (!$title) $title = $code;
-		if (!file_exists(MUSCA_PATH.APP_DIR.TEMPLATES_DIR.'/error.tpl')) die("<pre>$title\n$message");
+		if (!file_exists(PHP_PATH.VIEWS_DIR.'/error.tpl')) die("<pre>$title\n$message");
 
 		// display error page
 		$this->view->assign('message', $message);

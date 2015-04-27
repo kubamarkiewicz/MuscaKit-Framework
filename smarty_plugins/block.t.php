@@ -11,7 +11,7 @@
 	 * @param int $width 			- scale uploaded image to width
 	 * @param int $height 			- scale uploaded image to height
 	 * @param bool $crop 			- crop uploaded image
-	 * @param bool $admin 			- admin panel traslation. by dafault use ADMIN constant
+	 * @param bool $admin 			- is it admin panel traslation
 	 *
 	 */
 
@@ -22,13 +22,13 @@
 		$return = $smarty->i18n->t($tag, 
 									$params['section'], 
 									$params['label'], 
-									$params['html'], 
-									$params['file'], 
-									$params['image'], 
-									$params['width'], 
-									$params['height'], 
-									$params['crop'], 
-									$params['admin']
+									(bool)$params['html'], 
+									(bool)$params['file'], 
+									(bool)$params['image'], 
+									(int)$params['width'], 
+									(int)$params['height'], 
+									(bool)$params['crop'], 
+									isset($params['admin']) ? (bool)$params['admin'] : null
 								);
 		if ($params['html'] || (isset($params['escape']) && !$params['escape'])) return $return;
 		else return htmlspecialchars($return);

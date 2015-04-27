@@ -2,10 +2,10 @@
 namespace MuscaKit\Utils;
 
 
-class Musca_Utils_Upload
+class Upload
 {
 
-    private function uniqueFilename($archive_dir, $filename)
+    static function uniqueFilename($archive_dir, $filename)
     {
         $filename = strtolower($filename);
         $extension = substr(strrchr($filename, "."), 1);
