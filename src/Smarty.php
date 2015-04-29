@@ -19,7 +19,7 @@ class Smarty extends \Smarty
 // 				$this->compile_id = $this->lang;
             $this->error_reporting = DEBUG_MODE;
 
-			$this->template_dir 	= APP_PATH.VIEWS_DIR.'/';
+			$this->template_dir 	= PHP_PATH.VIEWS_DIR.'/';
 			$this->compile_dir 		= STORAGE_PATH.'/compile/';
 			$this->cache_dir 		= STORAGE_PATH.'/cache/';
 			$this->addPluginsDir(dirname(__DIR__).'/smarty_plugins');

@@ -13,7 +13,6 @@ class Router
     protected $controllersPath;
     protected $modulesPath;
 
-    protected $appNamespace = 'App';
     protected $controllerNamespace = 'Controllers';
     protected $controllerSuffix = 'Controller';
     protected $actionSuffix = '';
@@ -27,7 +26,7 @@ class Router
 		define('DS', DIRECTORY_SEPARATOR);
 
 		$this->arguments = func_get_args();
-		$this->controllersPath = APP_PATH . CONTROLLERS_DIR;
+		$this->controllersPath = PHP_PATH . CONTROLLERS_DIR;
 		$this->modulesPath = MODULES_PATH . DS;
 	}
 	
@@ -116,7 +115,7 @@ class Router
 			$controller = $namespace.'\\'.$controller;
 		}
 		else {
-			$namespace = $this->appNamespace.'\\'.$this->controllerNamespace.str_replace(DS, '\\', rtrim($dir, DS)); 
+			$namespace = $this->controllerNamespace.str_replace(DS, '\\', rtrim($dir, DS)); 
 			$controller = $namespace.'\\'.$controller;
 		}
 
@@ -137,7 +136,7 @@ class Router
 			if (method_exists($controller, $this->uri[$i])) $action = array_shift($this->uri);
 			
 			// if controler does not exist but exists view then display view
-			// elseif (($controller == 'index') && file_exists(APP_PATH . TEMPLATES_DIR . DS . $this->uri[$i].'.tpl'))
+			// elseif (($controller == 'index') && file_exists(PHP_PATH . TEMPLATES_DIR . DS . $this->uri[$i].'.tpl'))
 			// {
 			// 	$action = 'output';
 			// 	$this->uri[$i] .= '.tpl';
