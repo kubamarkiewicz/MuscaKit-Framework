@@ -26,7 +26,7 @@ class Router
 		define('DS', DIRECTORY_SEPARATOR);
 
 		$this->arguments = func_get_args();
-		$this->controllersPath = PHP_PATH . CONTROLLERS_DIR;
+		$this->controllersPath = PROTECTED_PATH . CONTROLLERS_DIR;
 		$this->modulesPath = MODULES_PATH . DS;
 	}
 	
@@ -136,7 +136,7 @@ class Router
 			if (method_exists($controller, $this->uri[$i])) $action = array_shift($this->uri);
 			
 			// if controler does not exist but exists view then display view
-			// elseif (($controller == 'index') && file_exists(PHP_PATH . TEMPLATES_DIR . DS . $this->uri[$i].'.tpl'))
+			// elseif (($controller == 'index') && file_exists(PROTECTED_PATH . TEMPLATES_DIR . DS . $this->uri[$i].'.tpl'))
 			// {
 			// 	$action = 'output';
 			// 	$this->uri[$i] .= '.tpl';
