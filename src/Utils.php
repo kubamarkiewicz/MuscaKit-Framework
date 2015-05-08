@@ -15,7 +15,7 @@ class Utils
 	static function filesFromDir($localPath) 
 	{
 		$list = array();
-		$diterator = new DirectoryIterator($localPath);
+		$diterator = new \DirectoryIterator($localPath);
 		foreach ($diterator as $item) 
 		{
 			if (($item->getFileName()<>'.') 
