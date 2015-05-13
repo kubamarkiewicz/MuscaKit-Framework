@@ -30,7 +30,7 @@
 									(bool)$params['crop'], 
 									isset($params['admin']) ? (bool)$params['admin'] : null
 								);
-		if ($params['html'] || (isset($params['escape']) && !$params['escape'])) return $return;
+		if ($params['html'] || (isset($params['escape']) && !(bool)$params['escape'])) return $return;
 		else return htmlspecialchars($return);
 	}
 
