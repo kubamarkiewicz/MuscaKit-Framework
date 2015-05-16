@@ -151,6 +151,7 @@ class Router
 			$action = 'error';
 			$this->uri = array();
 		}
+		$this->uri = array_map('urldecode', $this->uri);
 		call_user_func_array(array($dispatcher, $action), $this->uri);
 	}
 
