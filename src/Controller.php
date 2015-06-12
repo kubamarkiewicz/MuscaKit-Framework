@@ -30,7 +30,7 @@ class Controller
 	 * Send HTTP error header & display error page & die 
 	 * Find more errors codes here: http://krisjordan.com/php-class-for-http-response-status-codes
 	 */ 
-	public function error($message='Page not found', $title='Error 404', $code='404 Not Found')
+	public function error($message="Sorry, we can't find the page you're looking for.", $title='404', $code='404 Not Found')
 	{
 		// send HTTP error header
 		if ($code) header('HTTP/1.1 '.$code);
