@@ -22,7 +22,7 @@ class I18n
 	 */
 	function __construct($langs, $db=null, $isAdmin=false)
 	{
-		$this->langs = explode(',', $langs);
+		$this->langs = explode(',', str_replace(' ', '', $langs));
 		$this->db = $db;
 		$this->isAdmin = $isAdmin;
 	}
