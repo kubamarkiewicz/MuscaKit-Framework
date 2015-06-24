@@ -126,7 +126,7 @@ class Router
 
 		// include module view path
 		if ($module) {
-			$dispatcher->view->addTemplateDir($this->modulesPath . $this->slugToNamespace($module) . VIEWS_DIR . DS);
+			$dispatcher->view->addTemplateDir($this->modulesPath . $this->slugToNamespace($module) . TEMPLATES_DIR . DS);
 		}
 
 		// cargar el metodo

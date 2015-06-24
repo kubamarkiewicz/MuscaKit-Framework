@@ -36,7 +36,7 @@ class Controller
 		if ($code) header('HTTP/1.1 '.$code);
 
 		if (!$title) $title = $code;
-		if (!file_exists(PROTECTED_PATH.VIEWS_DIR.'/error.tpl')) die("<pre>$title\n$message");
+		if (!file_exists(PROTECTED_PATH.TEMPLATES_DIR.'/error.tpl')) die("<pre>$title\n$message");
 
 		// display error page
 		$this->view->assign('message', $message);
