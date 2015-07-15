@@ -45,7 +45,7 @@ class Router
 		$this->ar_folder_web = explode('/', $folder_real);
 
 		// IDIOMAS
-		if ($this->i18n)
+		if ($this->i18n && method_exists($this->i18n, 'getLangs'))
 		{
 			$langs = $this->i18n->getLangs();
 			$nFolder = count($this->ar_folder_web);
