@@ -125,8 +125,8 @@ class Router
 		$dispatcher = $class->newInstanceArgs($this->arguments);
 
 		// include module view path
-		if ($module) {
-			$dispatcher->view->addTemplateDir($this->modulesPath . $this->slugToNamespace($module) . TEMPLATES_DIR . DS);
+		if ($module && $dispatcher->template) {
+			$dispatcher->template->addTemplateDir($this->modulesPath . $this->slugToNamespace($module) . TEMPLATES_DIR . DS);
 		}
 
 		// cargar el metodo
