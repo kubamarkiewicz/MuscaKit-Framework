@@ -104,13 +104,18 @@ class Router
 			// echo $this->modulesPath.$module.CONTROLLERS_DIR.DS.$this->uri[$i].'.php';
 		if(isset($this->uri[$i]) && $this->uri[$i])
 		{
-			if ($module && is_file($this->modulesPath.$this->slugToNamespace($module).CONTROLLERS_DIR.DS.$this->slugToNamespace($this->uri[$i]).$this->controllerSuffix.'.php')) $controller = array_shift($this->uri);
+			if ($module && is_file($this->modulesPath.$this->slugToNamespace($module).DS.$this->slugToNamespace($this->uri[$i]).$this->controllerSuffix.'.php')) $controller = array_shift($this->uri);
+			elseif ($module && is_file($this->modulesPath.$this->slugToNamespace($module).CONTROLLERS_DIR.DS.$this->slugToNamespace($this->uri[$i]).$this->controllerSuffix.'.php')) $controller = array_shift($this->uri);
 			elseif(is_file($this->controllersPath.$dir.$this->slugToNamespace($this->uri[$i]).$this->controllerSuffix.'.php')) $controller = array_shift($this->uri);
 		}
 
 		// cargar el controlador
 		$controller = $this->slugToNamespace($controller).$this->controllerSuffix;
-		if ($module && is_file($this->modulesPath.$this->slugToNamespace($module).CONTROLLERS_DIR.DS.$this->slugToNamespace($controller).'.php')) {
+		if ($module && is_file($this->modulesPath.$this->slugToNamespace($module).DS.$this->slugToNamespace($controller).'.php')) {
+			$namespace = $this->modulesNamespace.'\\'.$this->slugToNamespace($module).str_replace(DS, '\\', rtrim($dir, DS)); 
+			$controller = $namespace.'\\'.$controller;
+		}		
+		elseif ($module && is_file($this->modulesPath.$this->slugToNamespace($module).CONTROLLERS_DIR.DS.$this->slugToNamespace($controller).'.php')) {
 			$namespace = $this->modulesNamespace.'\\'.$this->slugToNamespace($module).'\\'.$this->controllerNamespace.str_replace(DS, '\\', rtrim($dir, DS)); 
 			$controller = $namespace.'\\'.$controller;
 		}
