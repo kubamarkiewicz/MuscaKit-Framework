@@ -77,14 +77,12 @@ class Upload
 		elseif ($file['error']) throw new Exception('File upload error: error '.$file['error']);
 			
 		/* move file */
-		if (!file_exists($dir)) mkdir($dir);
-		@chmod($dir, 0777);
+		if (!file_exists($dir)) mkdir($dir, 0777);
 		$filename = self::uniqueFilename($dir, $file['name']);	
 		if (!move_uploaded_file($file['tmp_name'], $dir.'/'.$filename))
 		{
-			Musca_Utils_Log::log('File upload error: can not move uploaded file to '.$dir.'/'.$filename.
+			throw new \Exception('File upload error: can not move uploaded file to '.$dir.'/'.$filename.
 				"\nfile name: ".$file['name']."\nfile type: ".$file['type']."\nfile tmp_name: ".$file['tmp_name']."\nfile error: ".$file['error']."\nfile size: ".$file['size']);
-			throw new Exception('File upload error: can not move uploaded file');
 		}
 		chmod($dir.'/'.$filename, 0777);
 
@@ -113,8 +111,8 @@ class Upload
 		if (!$filename) return false;
 
 		/* resize|crop image */	
-		$filename = Musca_Utils::imageResize($dir.'/'.$filename, $width, $height, null, $crop);
-		if (!$filename) throw new Exception('Error: image resize failed.');
+		$filename = \MuscaKit\Utils::imageResize($dir.'/'.$filename, $width, $height, null, $crop);
+		if (!$filename) throw new \Exception('Error: image resize failed.');
 
 		return basename($filename);
 	}
