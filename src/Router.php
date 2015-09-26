@@ -138,7 +138,7 @@ class Router
 		$action = 'index';
 		if (isset($this->uri[$i]))
 		{
-			if (method_exists($controller, $this->uri[$i])) $action = array_shift($this->uri);
+			if (method_exists($controller, $this->slugToNamespace($this->uri[$i]))) $action = $this->slugToNamespace(array_shift($this->uri));
 			
 			// if controler does not exist but exists view then display view
 			// elseif (($controller == 'index') && file_exists(PROTECTED_PATH . TEMPLATES_DIR . DS . $this->uri[$i].'.tpl'))
