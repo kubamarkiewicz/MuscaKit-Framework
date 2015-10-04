@@ -83,10 +83,10 @@ class I18n
 
 		if (!isset($admin)) $admin = $this->isAdmin;
 		if ($admin)	{
-			$table = PRE.'musca_i18n_admin';
+			$table = DB_PRE.'musca_i18n_admin';
 		}
 		else {
-			$table = PRE.'musca_i18n';
+			$table = DB_PRE.'musca_i18n';
 		}
 		
 		$lang = $this->getLang();
