@@ -2,7 +2,8 @@
     "name": "kubamarkiewicz/musca-kit-framework",
     "description": "The MuscaKit Framework.",
     "require": {
-        "smarty/smarty": "~3.1@dev"
+        "smarty/smarty": "~3.1@dev",
+        "illuminate/database": "5.1.*"
     },
     "license": "MIT",
     "authors": [
