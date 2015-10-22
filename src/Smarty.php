@@ -20,8 +20,8 @@ class Smarty extends \Smarty
             $this->error_reporting = DEBUG_MODE;
 
 			$this->template_dir 	= PROTECTED_PATH.TEMPLATES_DIR.'/';
-			$this->compile_dir 		= TEMP_PATH.'/compile/';
-			$this->cache_dir 		= TEMP_PATH.'/cache/';
+			$this->compile_dir 		= STORAGE_PATH.'/compile/';
+			$this->cache_dir 		= STORAGE_PATH.'/cache/';
 			$this->addPluginsDir(dirname(__DIR__).'/smarty_plugins');
 		// ------------------------------------------- >>
 
