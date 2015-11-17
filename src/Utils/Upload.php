@@ -73,8 +73,8 @@ class Upload
 		*/
 		if (!$file) return false;
 		if ($file['error']==4) return false; // No file was uploaded
-		if ($file['error']==2) throw new Exception('File upload error: maximum file size ('.self::sizeHumRead(self::maxUpload()).') exeeded.');
-		elseif ($file['error']) throw new Exception('File upload error: error '.$file['error']);
+		if ($file['error']==2) throw new \Exception('File upload error: maximum file size ('.self::sizeHumRead(self::maxUpload()).') exeeded.');
+		elseif ($file['error']) throw new \Exception('File upload error: error '.$file['error']);
 			
 		/* move file */
 		if (!file_exists($dir)) mkdir($dir, 0777);

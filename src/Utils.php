@@ -404,7 +404,7 @@ class Utils
 
 		if (!is_dir(dirname($out_file)))
 		{
-			throw new Exception("Directory: ".dirname($out_file)." does not exist.");
+			throw new \Exception("Directory: ".dirname($out_file)." does not exist.");
 		}
 		
 		// saving image
