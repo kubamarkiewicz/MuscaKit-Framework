@@ -256,7 +256,7 @@ class Utils
 
 
 	/**
-	 * modified 2013.09.29
+	 * modified 2015.11.17
 	 * resize image keeping it's proportions and (optionaly) crop it.
 	 * requires PHP 5.2.0
 	 * (C) Kuba Markiewicz 2011
@@ -272,6 +272,9 @@ class Utils
 	 */
 	static function imageResize($in_path, $width=null, $height=null, $out_path=null, $crop=false, $quality=85, $prefix=null, $suffix=null) 
 	{
+		$in_path = '/Users/kuba/Google Drive/work/projects/inplus/www/motocyklowe.png';
+		$out_path = 'resize.png';
+		
 		if (!$width) $width = 10000;
 		if (!$height) $height = 10000;
 
@@ -325,8 +328,9 @@ class Utils
 				{
 				    imagealphablending($img_out, false);
 				    imagesavealpha($img_out, true);
-				    $trans_layer_overlay = imagecolorallocatealpha($img_out, 220, 220, 220, 127);
-					imagefill($img_out, 0, 0, $trans_layer_overlay);
+				    // $trans_layer_overlay = imagecolorallocatealpha($img_out, 255, 255, 255, 127);
+					// imagefill($img_out, 0, 0, $trans_layer_overlay);
+					// imagefilledrectangle($img_out, 0, 0, $width, $height, $trans_layer_overlay);
 				}
 				if (!imagecopyresampled($img_out, $img, 0, 0, $x, $y, $width, $height, $w, $h)) return false;
 			} else {
@@ -362,8 +366,7 @@ class Utils
 			// scaling
 			if ($resize_needed) {
 				$img_out = imagecreatetruecolor($w, $h);
-				if($imginfo[2] == 3) // if png, preserve transparency
-				{
+				if($imginfo[2] == 3) { // if png, preserve transparency
 				    imagealphablending($img_out, false);
 				    imagesavealpha($img_out, true);
 				    $trans_layer_overlay = imagecolorallocatealpha($img_out, 220, 220, 220, 127);
@@ -372,6 +375,10 @@ class Utils
 				if (!imagecopyresampled($img_out, $img, 0, 0, 0, 0, $w, $h, $im_w, $im_h)) return false;
 			} else {
 				$img_out = $img;
+				if($imginfo[2] == 3) { // if png, preserve transparency
+				    imagealphablending($img_out, false);
+				    imagesavealpha($img_out, true);
+				}
 			}
 		}
 		
