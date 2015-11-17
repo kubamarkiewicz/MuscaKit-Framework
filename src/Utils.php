@@ -272,9 +272,6 @@ class Utils
 	 */
 	static function imageResize($in_path, $width=null, $height=null, $out_path=null, $crop=false, $quality=85, $prefix=null, $suffix=null) 
 	{
-		$in_path = '/Users/kuba/Google Drive/work/projects/inplus/www/motocyklowe.png';
-		$out_path = 'resize.png';
-		
 		if (!$width) $width = 10000;
 		if (!$height) $height = 10000;
 
